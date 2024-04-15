@@ -1,0 +1,21 @@
+---
+- name: Install packeges
+  yum: 
+    name: nfs-utils
+    state: present
+
+- name: enabled nfs-server service
+  systemd_service:
+    name: "{{ item }}"
+    enabled: true
+  loop:
+    - rpcbind
+    - nfs-server
+
+- name: start nfs-server service
+  systemd_service:
+    state: started
+    name: "{{ item }}"
+  loop:
+    - rpcbind
+    - nfs-server

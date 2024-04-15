@@ -1,0 +1,10 @@
+---
+- name: configuring NFS server
+  hosts: nfss
+  roles:
+    - nfss_conf
+
+- name: configuring NFS clients
+  hosts: nfsc
+  roles: 
+    - nfsc_conf
